@@ -1,7 +1,44 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8" />
   <title>Update Status</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 40px;
+      background-color: #f2f2f2;
+      text-align: center;
+    }
+    h2 {
+      margin-bottom: 20px;
+    }
+    select, button {
+      font-size: 16px;
+      padding: 10px;
+      margin-top: 10px;
+      margin-bottom: 15px;
+    }
+    button {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+    a {
+      display: block;
+      margin-top: 20px;
+      text-decoration: none;
+      color: #333;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
   <script>
     function updateLocation() {
       if (navigator.geolocation) {
@@ -21,23 +58,21 @@
 <body>
   <h2>Bus: {{ bus_name }}</h2>
   <form method="POST">
-    <label>Status:</label><br>
-    <select name="status">
+    <label for="status">Status:</label><br>
+    <select name="status" id="status" required>
       <option value="on time">On Time</option>
       <option value="late">Late</option>
       <option value="cancelled">Cancelled</option>
       <option value="not working">Not Working</option>
-    </select><br><br>
+    </select><br>
 
     <input type="hidden" name="lat" id="lat">
     <input type="hidden" name="lng" id="lng">
 
-    <button type="button" onclick="updateLocation()">Update Location</button>
-    <br><br>
+    <button type="button" onclick="updateLocation()">Capture Location</button><br>
     <button type="submit">Update</button>
   </form>
 
-  <br><a href="/logout">Logout</a>
+  <a href="/logout">Logout</a>
 </body>
 </html>
-
